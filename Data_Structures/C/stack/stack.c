@@ -18,6 +18,10 @@ Stack * create(){
     return s;    
 }
 
+int empty(Stack *s){
+    return s->start == NULL;
+}
+
 void  push(Stack *s,int element){
     Queue *q = (Queue *) malloc(sizeof(Queue));
     q->value = element;
