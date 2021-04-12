@@ -1,16 +1,22 @@
 import pg from 'pg'
+import * as dotenv from "dotenv";
+
+if(process.env.PG_USER !== 'production'){
+	dotenv.config()
+}
+
 
 const client = new pg.Pool({
-	user: 'postgres',
+	user: process.env.PG_USER,
 	host: 'localhost',
 	database:'Tasks_db',
-	password: '5av100404',
+	password:process.env.PG_PASSWORD,
 	port: '5434',
 })
 
 const db = {
-	query:(text:string,params:string) => {
-		return client.query(text,params)
+	query:(text:string,values:string[]) => {
+		return client.query(text,values)
 	},
 }
 
