@@ -11,7 +11,7 @@ const client = new pg.Pool({
 	host: 'localhost',
 	database:'Tasks_db',
 	password:process.env.PG_PASSWORD,
-	port: '5434',
+	port: 5434,
 })
 
 const db = {
