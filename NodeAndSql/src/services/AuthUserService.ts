@@ -18,13 +18,16 @@ class AuthUserService{
 			throw new Error('Email/password not exisiting')
 		}
 
-		const passwordCompare = await compare(password,user.rows[0].password)
+		const passwordCompare = await compare(password,user.rows[0]?.password)
 
 		if(!passwordCompare){
 			throw new Error('Email/password not existing')
 		}
 
-		return {user: user.rows[0],token:'teste'}
+		delete user.rows[0]?.password
+
+		return user.rows[0]
+		
 	}
 }
 
